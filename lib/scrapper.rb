@@ -55,6 +55,7 @@ end
     def save_as_csv
 # création d'un fichier pour sauvegarder notre database         
      file = CSV.open("db/mail.csv", "wb") do |csv|
+# en tête de notre fichier
          csv << ["city", "name"]
 # boucle pour remplir notre fichier          
       @mail_list.each do |(city,name)|
