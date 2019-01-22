@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 require 'json'
+require 'google_drive'
 
 class ScrapperMail
     
@@ -32,12 +33,13 @@ end
 def save_as_spreadsheet
 session =  GoogleDrive::Session.from_config ("config.json")
     ws = session.spreadsheet_by_key("1LsfkJ4MyRCeAK_7hLpMCJNaDsaFgeE9xjDON8w6D9M8").worksheets[0]
-    city_names.each do |city|
-        ws
-    
+    @mail_list.each_with_index do |(city, mail),index|
+        ws[index + 1,1] = city
+        ws [index +1, 2] = mail
+    end
     ws [1, 1] = "City"
     ws [1, 2] = "Mail"
-    ws [mail, city_names] 
+    #ws [mail, city_names] 
     ws.save
     
 end
