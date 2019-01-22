@@ -28,6 +28,19 @@ def save_as_JSON
     file.write(@mail_list.to_json)
     file.close
 end
+    
+def save_as_spreadsheet
+session =  GoogleDrive::Session.from_config ("config.json")
+    ws = session.spreadsheet_by_key("1LsfkJ4MyRCeAK_7hLpMCJNaDsaFgeE9xjDON8w6D9M8").worksheets[0]
+    city_names.each do |city|
+        ws
+    
+    ws [1, 1] = "City"
+    ws [1, 2] = "Mail"
+    ws [mail, city_names] 
+    ws.save
+    
+end
 
 #get_mail
 #binding.pry

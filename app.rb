@@ -6,4 +6,5 @@ $:.unshift File.expand_path('./../lib', __FILE__)
 require "scrapper"
 scrapper = ScrapperMail.new
 scrapper.save_as_JSON
+scrapper.save_as_spreadsheet
 
