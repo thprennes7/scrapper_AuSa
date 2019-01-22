@@ -28,7 +28,7 @@ def save_as_JSON(mail_list)
   f.write(mail_list.to_json)
     end
 end
-get_mail
+#get_mail
 save_as_JSON(mail_list)
 end
 
