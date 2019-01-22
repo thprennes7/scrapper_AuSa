@@ -6,6 +6,7 @@ require 'open-uri'
 require 'pry'
 require 'json'
 require 'google_drive'
+require 'csv'
 
 class ScrapperMail
     
@@ -39,10 +40,16 @@ session =  GoogleDrive::Session.from_config ("config.json")
     end
     ws [1, 1] = "City"
     ws [1, 2] = "Mail"
-    #ws [mail, city_names] 
-    ws.save
-    
+    ws.save  
 end
+    
+    def save_as_csv
+     file = CSV.open("db/mail.csv", "wb") do |csv|
+      @mail_list.each do |(city,name)|
+          csv << [city,name]
+      end
+     end
+    end
 
 #get_mail
 #binding.pry
